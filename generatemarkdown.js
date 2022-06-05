@@ -61,9 +61,11 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
   ## Contact
-  For more information about this project Contacts
+  For more information about this project Contact:
   ${data.authors}
+
   ${data.github}
+
   ${data.contact}
   
   ${renderLicenseSection(data.license,data.authors,data.title)}
