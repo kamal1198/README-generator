@@ -1,4 +1,4 @@
- # Generator
+ # README Generator
     https://github.com/elmonstro/Generator
     # Description
     efagaha

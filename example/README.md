@@ -1,4 +1,4 @@
-# portfolio
+# Portfolio generator
   [![GPL](https://img.shields.io/badge/license-GPL-blue)](https://opensource.org/licenses/GPL-3.0)
   ## Table of Contents
   * [DESCRIPTION](#description)
@@ -8,7 +8,7 @@
   * [LEGAL](#legal)
   
   ## Description
-  x
+  This is a README portfolio for kamal.
   ## Installation
   x
   ## Usage
@@ -16,12 +16,10 @@
   ## Contact
   For more information about this project Contacts
   kamal
-
   kamal1198
-  
   kaur.preetkamal1198@gmail.com
   
-   portfolio
+   Portfolio generator
         Copyright (C) 2022  kamal
     
         This program is free software: you can redistribute it and/or modify

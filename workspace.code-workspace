@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "README-generator",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5501
+	}
+}

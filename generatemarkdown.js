@@ -1,5 +1,21 @@
-// function to generate markdown for README
+// TODO: Create a function that returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+function renderLicenseBadge(license) {
+    if (license=== "MIT"){
+        return "[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)"
+    }
+    else if (license==="BSD"){
+        return "[![BSD](https://img.shields.io/badge/license-BSD-blue)](https://opensource.org/licenses/BSD-3-Clause)"
+    }
+    else if (license==="GPL"){
+        return "[![GPL](https://img.shields.io/badge/license-GPL-blue)](https://opensource.org/licenses/GPL-3.0)"
+    }
+}
 
+
+
+// TODO: Create a function that returns the license section of README
+// If there is no license, return an empty string
 function renderLicenseSection(license, author,title) {
     if (license=== "MIT"){
         return "[![MIT](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)"
@@ -26,33 +42,33 @@ function renderLicenseSection(license, author,title) {
     }
 }
 
+
+// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-    return `
-    # ${data.Title}
-    https://github.com/${data.Username}/${data.Title}
-    # Description
-    ${data.Description}
-    # Table of Contents 
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)
-    # Installation
-    The following necessary dependencies must be installed to run the application properly: ${data.Installation}
-    # Usage
-    In order to use this app, ${data.Usage}
-    # License
-    This project is licensed under the ${data.License} license. 
-    ${renderLicenseSection(data.License, data.Contributing, data.Title)}
-    # Contributing
-    ​Contributors: ${data.Contributing}
-    # Tests
-    The following is needed to run the test: ${data.Tests}
-    # Questions
-    If you have any questions about the repo, open an issue or contact ${data.Username} directly at : ${data.Email}.
-    `
+  return `# ${data.title}
+  ${renderLicenseBadge(data.license)}
+  ## Table of Contents
+  * [DESCRIPTION](#description)
+  * [INSTALLATION](#installation)
+  * [USAGE](#usage)
+  * [CONTACT](#contact)
+  * [LEGAL](#legal)
+  
+  ## Description
+  ${data.description}
+  ## Installation
+  ${data.installation}
+  ## Usage
+  ${data.usage}
+  ## Contact
+  For more information about this project Contacts
+  ${data.authors}
+  ${data.github}
+  ${data.contact}
+  
+  ${renderLicenseSection(data.license,data.authors,data.title)}
+
+`;
 }
 
 module.exports = generateMarkdown;

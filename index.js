@@ -1,85 +1,64 @@
-const inquirer = require("inquirer");
-const fs = require('fs');
-const util = require("util");
-
-const generatorMarkdown = require('./util/generateMarkdown');
-
-
-// array of questions for user
-const questions = [{
-        type: "input",
-        message: "What is the title of the project?",
-        name: "Title"
-    }, {
-        type: "input",
-        message: "What is the project about? Give a detailed description of your project?",
-        name: "Description"
-    }, {
-        type: "input",
-        message: "What does the user need to install to run this app (ie...dependencies)?",
-        name: "Installation"
-    }, {
-        type: "input",
-        message: "How is the app used? Give instructions",
-        name: "Usage"
-    }, {
-        type:"list",
-        name:"License",
-        message:"What license is your program licenced under?",
-        choices:["MIT","BSD","GPL"]
-    }, {
-        type: "input",
-        message: "Who contributed to this project?:",
-        name: "Contributing"
-    }, {
-        type: "input",
-        message: "What commands are needed to test this app?",
-        name: "Tests"
-    }, {
-        type: "input",
-        message: "Contact info for inquiries.",
-        name: "Questions"
-    }, {
-        type: 'input',
-        message: 'What is your Github username?',
-        name: 'Username'
-    }, {
-        type: 'input',
-        message: 'What is your email address?',
-        name: 'Email'
+// TODO: Include packages needed for this application
+const fs=require("fs");
+const path=require("path");
+const { prompt }=require("inquirer")
+const generateMarkdown = require("./generatemarkdown")
+// TODO: Create an array of questions for user input
+const questions = [ 
+    {
+        type:"input",
+        name:"title",
+        message:"Portfolio?",
     },
+    {
+        type:"list",
+        name:"license",
+        message:"license?",
+        choices:["MIT","BSD","GPL"]
+    },
+    {
+        type:"input",
+        name:"description",
+        message:"description?",
+    },
+    {
+        type:"input",
+        name:"installation",
+        message:"installation?",
+    },
+    {
+        type:"input",
+        name:"usage",
+        message:"usage?",
+    },
+    {
+        type:"input",
+        name:"authors",
+        message:"authors?",
+    },
+    {
+        type:"input",
+        name:"github",
+        message:"github-username?",
+    },
+    {
+        type:"input",
+        name:"contact",
+        message:"contact?",
+    },
+];
 
-]
-
-// function to write README file
+// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-
-    fs.writeFile(fileName, data, function(err) {
-        console.log(fileName)
-        console.log(data)
-        if (err) {
-            return console.log(err)
-        } else {
-            console.log("success")
-        }
-    })
-
+   return fs.writeFileSync(path.join(process.cwd(),"/example/",fileName),data)
 }
 
-
-
-
-
-// function to initialize program
+// TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-        .then(function(data) {
-            writeToFile("README.md", generatorMarkdown(data));
-            console.log(data)
-
-        })
-
+    prompt(questions).then(answers =>{
+       writeToFile("README.md",generateMarkdown(answers))
+    })
 }
 
-// function call to initialize program
+// Function call to initialize app
 init();
